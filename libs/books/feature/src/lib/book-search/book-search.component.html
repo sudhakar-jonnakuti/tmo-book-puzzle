@@ -1,11 +1,11 @@
-<form [formGroup]="searchForm" (submit)="searchBooks()">
+<form (submit)="searchBooks(searchForm.value)">
   <mat-form-field floatLabel="never">
     <input
       autoFocus
       matInput
       type="search"
       placeholder="Search for books to add to your reading list"
-      formControlName="term"
+      [formControl] = "searchForm"
     />
     <button aria-label="Search button" mat-icon-button matSuffix>
       <mat-icon aria-hidden="false" aria-label="search icon">search</mat-icon>
