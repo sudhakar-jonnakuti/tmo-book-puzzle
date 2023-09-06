@@ -10,7 +10,9 @@
       </div>
     </div>
     <div>
-      <button mat-icon-button color="warn" [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
+      <button data-testing="remove-button" 
+        mat-icon-button color="warn" 
+        [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
         (click)="removeFromReadingList(b)">
         <mat-icon aria-hidden="false" aria-label="remove icon">remove_circle</mat-icon>
       </button>
