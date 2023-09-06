@@ -15,7 +15,7 @@
 
 <ng-container *ngIf="(books$ | async).length > 0; else empty">
   <div class="book-grid">
-    <div class="book" data-testing="book-item" *ngFor="let b of books$ | async; trackBy: trackByBookId">
+    <div class="book" data-testing="book-item" *ngFor="let b of books$ | async; trackBy: trackByBookId; let i = index;">
       <div aria-label="Book Title" class="book--title">
         {{ b.title }}
       </div>
@@ -33,12 +33,13 @@
           <div>
             <button
               aria-label="Want to Read button"
+              data-testing="want-to-read-button"
               mat-flat-button
               color="primary"
               (click)="addBookToReadingList(b)"
               [disabled]="b.isAdded"
             >
-              Want to Read
+            {{ b.finished ? 'Finished' : 'Want to Read' }}
             </button>
           </div>
         </div>

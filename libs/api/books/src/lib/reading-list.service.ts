@@ -23,6 +23,29 @@ export class ReadingListService {
     });
   }
 
+  async markAsRead(id: string, item: ReadingListItem): Promise<ReadingListItem> {
+    let itemToBeUpdated: ReadingListItem;
+
+    try {
+      this.storage.update(list => {
+        const itemIndex: number = list.findIndex(book => book?.bookId === id);
+        if(itemIndex >= 0) {
+          itemToBeUpdated = list[itemIndex];
+          itemToBeUpdated.finished = true;
+          itemToBeUpdated.finishedDate = new Date().toISOString();
+          list[itemIndex] = itemToBeUpdated;
+          return list;
+        }
+      });      
+    } catch (error) {
+      itemToBeUpdated.finished = false;
+      itemToBeUpdated = item;
+    } finally {
+      return itemToBeUpdated;
+    }
+
+  }
+
   async removeBook(id: string): Promise<void> {
     this.storage.update(list => {
       return list.filter(x => x.bookId !== id);
