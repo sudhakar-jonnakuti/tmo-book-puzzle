@@ -4,40 +4,89 @@
   display: block;
   font-size: 0.75rem;
 }
+
 .reading-list {
   padding: $spacing-xxs;
-}
 
-.reading-list-item {
-  display: flex;
-  justify-content: center;
-  margin-bottom: $spacing-xs;
-  width: 100%;
-
-  > * {
+  &-item {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    margin-bottom: $spacing-xs;
+    width: 100%;
+    padding: 0 0 0 10px;
+    background: #e3e6e8;
+    border-radius: 6px;
+
+    &-bookfinished {
+      background: #a3cab0;
+    }
+
+    > * {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &--checkbox {
+      background: #fff;
+      height: 70px;
+      width: 40px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+
+      &-fbg {
+        mat-icon {
+          color: #439c61;
+        }
+      }
+    }
+
+    &--remove {
+      background: #fff;
+      height: 70px;
+      width: 40px;
+      border: 1px solid #ddd;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+
+      mat-icon {
+        color: #e65b5b;
+      }
+    }
+
+    &--checkbox,
+    &--remove {
+      button {
+        background: none;
+        border: none;
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+
+    &--cover {
+      max-width: 36px;
+      max-height: 36px;
+      margin-right: $spacing-xxs;
+    }
+
+    &--details {
+      flex: 1;
+      min-width: 0;
+      margin-right: $spacing-xxs;
+
+      &--title,
+      &--author {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      &--finished {
+        margin: 6px 0 0 0;
+      }
+    }
   }
-}
-
-.reading-list-item--cover {
-  max-width: 36px;
-  max-height: 36px;
-  margin-right: $spacing-xxs;
-}
-
-.reading-list-item--details {
-  flex: 1;
-  min-width: 0;
-  margin-right: $spacing-xxs;
-}
-
-.reading-list-item--details--title,
-.reading-list-item--details--author {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .empty {
